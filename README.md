@@ -1,3 +1,14 @@
+---
+title: Hermes Agent
+emoji: 🤖
+colorFrom: blue
+colorTo: purple
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
+# Hermes Agent
 <p align="center">
   <img src="assets/banner.png" alt="Hermes Agent" width="100%">
 </p>
