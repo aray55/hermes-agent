@@ -1,25 +1,24 @@
 name: Sync to Hugging Face Hub
+
 on:
   push:
-    branches: [main] # سيعمل الكود عند كل Push لفرع main
-  workflow_dispatch: # يتيح لك تشغيل المزامنة يدوياً أيضاً
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   sync:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           lfs: true
-      - name: Push to Hub
-        uses: huggingface/hub-sync@v1.0
+
+      - name: Push to Hugging Face Hub
+        uses: huggingface/hub-sync@v0.1.0
         with:
-          # اكتب هنا اسم مستودعك في GitHub (مثال: YourUsername/hermes-agent)
-          github_repo_id: aray55/hermes-agent
-          
-          # اكتب هنا اسم حسابك واسم الـ Space في Hugging Face
+          github_repo_id: ${{ github.repository }}
           huggingface_repo_id: aray5/hermes-agent-space
-          
-          # هذا هو السر الذي أضفته في إعدادات GitHub
           hf_token: ${{ secrets.HF_TOKEN }}
