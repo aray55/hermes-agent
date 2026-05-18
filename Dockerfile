@@ -114,10 +114,8 @@ ENV HERMES_WEB_DIST=/opt/hermes/hermes_cli/web_dist
 ENV HERMES_HOME=/opt/data
 ENV PATH="/opt/data/.local/bin:${PATH}"
 
-# Hugging Face Spaces port
-ENV HERMES_DASHBOARD=1
-ENV HERMES_DASHBOARD_HOST=0.0.0.0
-ENV HERMES_DASHBOARD_PORT=7860
+# Hugging Face Spaces API port
+ENV PORT=7860
 
 VOLUME [ "/opt/data" ]
 
@@ -125,4 +123,4 @@ RUN chmod +x /opt/hermes/docker/entrypoint.sh
 
 ENTRYPOINT [ "/usr/bin/tini", "-g", "--", "/opt/hermes/docker/entrypoint.sh" ]
 
-CMD ["sleep", "infinity"]
+CMD ["api", "--host", "0.0.0.0", "--port", "7860"]
